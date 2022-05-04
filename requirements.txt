@@ -1,0 +1,13 @@
+uvicorn[standard]
+python-multipart==0.0.5
+fastapi==0.75.2
+rich
+click
+opentelemetry-instrumentation-fastapi
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-exporter-zipkin-proto-http
+starlette-prometheus
+locust
+Jinja2
+sqlalchemy

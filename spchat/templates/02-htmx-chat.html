@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<title>Chat</title>
+	<script src="https://unpkg.com/hyperscript.org@0.9.5"></script>
+	<script src="https://unpkg.com/htmx.org@1.7.0" integrity="sha384-EzBXYPt0/T6gxNp0nuPtLkmRpmDBbjg6WmCUZRLXBBwYYmwAUxzlSGej0ARHX0Bo" crossorigin="anonymous" defer></script>
+    </head>
+
+    <body>
+	<h1>WebSocket Chat</h1>
+	<div hx-ws="connect:/ws">
+	    <!-- input for new messages, send a message to the backend
+		 via websocket -->
+	    <form hx-ws="send:submit"
+		  _="on submit reset() me">
+
+		<input id="input-field" name="chat_message" />
+	    </form>
+	</div>
+
+	<!-- location for new messages from the server -->
+	<div id="content"></div>
+    </body>
+</html>

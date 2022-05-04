@@ -1,0 +1,31 @@
+<div class="card">
+
+    <!-- location for new messages from the server -->
+    <div id="content"
+	 class="overflow-y-auto h-400">
+    </div>
+
+    <div hx-ws="connect:/ws/{{ client_id }}" class="text-right">
+	<!-- input for new messages, send a message to the backend
+	     via websocket -->
+	<form hx-ws="send:submit"
+		     _="on submit reset() me"
+	      autocomplete=off>
+
+
+	    <div class="input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text">@{{ client_id }}:</span>
+		</div>
+		<input id="input-field" name="chat_message"
+		       type="text" class="form-control"
+		/>
+		<div class="input-group-append">
+		    <span class="input-group-text">send</span>
+		</div>
+	    </div>
+	</form>
+    </div>
+
+
+</div>

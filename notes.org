@@ -1,0 +1,16 @@
+* Objectives
+  - use fastapi websocket facility
+  - use jinja2 html templating
+  - use htmx to avoid javascript on the minimal frontend
+
+* Features
+** Backend
+   - connection manager
+     - store ws by key/value
+
+* TODO
+** Backend
+   - persist messages
+   - auth
+** GUI
+   - reduce template code duplication by using extends
