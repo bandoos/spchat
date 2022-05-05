@@ -59,4 +59,4 @@ async def websocket_endpoint(websocket: WebSocket):
 
 
 if __name__ == "__main__":
-    uvicorn.run("spchat.core:app", host=HOST, port=PORT, reload=True)
+    uvicorn.run("spchat.scratch.basic:app", host=HOST, port=PORT, reload=True)
