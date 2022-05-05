@@ -1,9 +1,15 @@
 from sqlalchemy import create_engine
 from sqlalchemy import Table, Column, Integer, String, DateTime, MetaData
 import sqlalchemy as sql
+from dataclasses import dataclass
 
 SQLITE = 'sqlite'
 MESSAGES = 'messages'
+
+
+@dataclass
+class AppTables:
+    messages: Table
 
 
 class MyDriver:
@@ -23,7 +29,7 @@ class MyDriver:
     def create_tables(self):
         meta = MetaData()
 
-        self.messages = Table(
+        messages = Table(
             MESSAGES,
             meta,
             Column('id', Integer, primary_key=True),
@@ -31,6 +37,8 @@ class MyDriver:
             Column('chat_message', String, nullable=False),
             Column('at', DateTime, nullable=False),
         )
+
+        self.tables = AppTables(messages=messages)
 
         try:
             meta.create_all(self.db_engine)
@@ -45,17 +53,18 @@ from datetime import datetime
 
 def dummy_populate(dbms: MyDriver, n: int):
     with dbms.db_engine.connect() as conn:
-        result = conn.execute(sql.insert(dbms.messages), [{
-            "user_from": "sandy",
-            "chat_message": f"Sandy says {i}",
-            "at": datetime.now()
-        } for i in range(n)])
+        result = conn.execute(sql.insert(dbms.tables.messages),
+                              [{
+                                  "user_from": "sandy",
+                                  "chat_message": f"Sandy says {i}",
+                                  "at": datetime.now()
+                              } for i in range(n)])
         #conn.commit()
 
 
 def all_messages(dbms: MyDriver):
 
-    q = sql.select([dbms.messages])
+    q = sql.select([dbms.tables.messages])
     conn = dbms.db_engine.connect()
     rp = conn.execute(q)
     return rp.fetchall()

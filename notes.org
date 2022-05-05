@@ -7,10 +7,14 @@
 ** Backend
    - connection manager
      - store ws by key/value
+   - persist messages
+     - sqlite backend
+     - initial messages sync
 
 * TODO
 ** Backend
-   - persist messages
    - auth
+   - limit size of initial message sync
+     - add messaged id to allow for further back-fetching on demand
 ** GUI
    - reduce template code duplication by using extends

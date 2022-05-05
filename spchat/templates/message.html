@@ -1,6 +1,9 @@
 <div hx-swap-oob="beforeend:#content">
     <div class="border rounded bg-primary m-5 p-5 text-dark-dm">
-	<div _="on load scrollIntoView() me">{{ message }}</div>
+	<div _="on load scrollIntoView() me"> <span class='font-size-12'>@{{ client_id }}</span>
+	    <br/>
+	    {{ message }}
+	</div>
 	<div class="font-size-12"> {{ time }} </div>
     </div>
 </div>

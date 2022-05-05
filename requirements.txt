@@ -11,3 +11,5 @@ starlette-prometheus
 locust
 Jinja2
 sqlalchemy
+databases
+aiosqlite
